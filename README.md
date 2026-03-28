@@ -81,7 +81,7 @@ A weighted system that flags scam-specific patterns the ML model may miss:
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/your-username/jobguard-fake-job-detector.git
+git clone https://github.com/rihanpathan-6509/JobGuard-Fake-Job-Detection.git
 cd jobguard-fake-job-detector
 
 # 2. Install dependencies
