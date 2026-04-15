@@ -14,110 +14,126 @@ st.set_page_config(
 # ── custom CSS ────────────────────────────────────────────────────────────────
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 html, body, [class*="css"] {
-    font-family: 'Syne', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
-/* dark background */
+/* ── background: deep navy with subtle dot grid ── */
 .stApp {
-    background-color: #0a0a0f;
-    background-image:
-        linear-gradient(rgba(0,229,160,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,229,160,0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
+    background-color: #080e1c;
+    background-image: radial-gradient(circle, rgba(99,179,237,0.07) 1px, transparent 1px);
+    background-size: 28px 28px;
 }
 
 /* main block */
 .block-container {
-    max-width: 820px !important;
+    max-width: 840px !important;
     padding-top: 2.5rem !important;
 }
 
 /* headings */
-h1 { font-family: 'Syne', sans-serif !important; font-weight: 800 !important; color: #e8e8f0 !important; letter-spacing: -0.02em !important; }
-h2, h3 { font-family: 'Syne', sans-serif !important; color: #e8e8f0 !important; }
-p, li, label { color: #c8c8d8 !important; }
+h1 { font-family: 'Inter', sans-serif !important; font-weight: 700 !important; color: #f0f4ff !important; letter-spacing: -0.03em !important; }
+h2, h3 { font-family: 'Inter', sans-serif !important; font-weight: 600 !important; color: #c9d6f0 !important; }
+p, li { color: #8a9cc0 !important; }
 
 /* inputs */
 .stTextInput>div>div>input,
 .stTextArea>div>div>textarea,
 .stSelectbox>div>div>div {
-    background-color: #111118 !important;
-    border: 1px solid #2a2a3a !important;
-    border-radius: 4px !important;
-    color: #e8e8f0 !important;
-    font-family: 'Space Mono', monospace !important;
+    background-color: #0f1a2e !important;
+    border: 1px solid #1e2e4a !important;
+    border-radius: 8px !important;
+    color: #e8eeff !important;
+    font-family: 'JetBrains Mono', monospace !important;
     font-size: 13px !important;
+    transition: border-color 0.2s !important;
 }
 
 .stTextInput>div>div>input:focus,
 .stTextArea>div>div>textarea:focus {
-    border-color: #00e5a0 !important;
-    box-shadow: 0 0 0 3px rgba(0,229,160,0.08) !important;
+    border-color: #f59e0b !important;
+    box-shadow: 0 0 0 3px rgba(245,158,11,0.10) !important;
 }
 
 /* labels */
 .stTextInput label, .stTextArea label, .stSelectbox label {
-    font-family: 'Space Mono', monospace !important;
-    font-size: 11px !important;
-    letter-spacing: 0.12em !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 10px !important;
+    letter-spacing: 0.14em !important;
     text-transform: uppercase !important;
-    color: #00e5a0 !important;
-    font-weight: 700 !important;
+    color: #f59e0b !important;
+    font-weight: 500 !important;
 }
 
 /* button */
 .stButton>button {
-    background-color: #00e5a0 !important;
-    color: #000 !important;
-    font-family: 'Syne', sans-serif !important;
-    font-weight: 800 !important;
+    background: linear-gradient(135deg, #1e3a6e 0%, #2563eb 100%) !important;
+    color: #ffffff !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 600 !important;
     font-size: 15px !important;
-    letter-spacing: 0.05em !important;
-    text-transform: uppercase !important;
-    border: none !important;
-    border-radius: 4px !important;
+    letter-spacing: 0.04em !important;
+    border: 1px solid #3b82f6 !important;
+    border-radius: 8px !important;
     padding: 14px 32px !important;
     width: 100% !important;
-    transition: opacity 0.2s !important;
+    transition: all 0.2s !important;
 }
-.stButton>button:hover { opacity: 0.85 !important; }
+.stButton>button:hover {
+    background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%) !important;
+    border-color: #60a5fa !important;
+    transform: translateY(-1px) !important;
+}
 
 /* divider */
-hr { border-color: #2a2a3a !important; }
+hr { border-color: #1a2742 !important; }
 
 /* metric */
 [data-testid="metric-container"] {
-    background: #16161f;
-    border: 1px solid #2a2a3a;
-    border-radius: 4px;
-    padding: 16px 20px !important;
+    background: #0c1628;
+    border: 1px solid #1e2e4a;
+    border-radius: 10px;
+    padding: 18px 22px !important;
+    border-top: 2px solid #f59e0b !important;
 }
 [data-testid="metric-container"] label {
-    font-family: 'Space Mono', monospace !important;
+    font-family: 'JetBrains Mono', monospace !important;
     font-size: 10px !important;
     text-transform: uppercase !important;
-    letter-spacing: 0.1em !important;
-    color: #6b6b85 !important;
+    letter-spacing: 0.12em !important;
+    color: #4a6080 !important;
 }
 [data-testid="metric-container"] [data-testid="stMetricValue"] {
-    color: #00e5a0 !important;
-    font-weight: 800 !important;
+    color: #f0f4ff !important;
+    font-weight: 700 !important;
+    font-size: 1.7rem !important;
 }
 
 /* sidebar */
 section[data-testid="stSidebar"] {
-    background-color: #111118 !important;
-    border-right: 1px solid #2a2a3a !important;
+    background-color: #060d1a !important;
+    border-right: 1px solid #1a2742 !important;
 }
-section[data-testid="stSidebar"] * { color: #c8c8d8 !important; }
-section[data-testid="stSidebar"] h2, section[data-testid="stSidebar"] h3 { color: #00e5a0 !important; }
+section[data-testid="stSidebar"] * { color: #8a9cc0 !important; }
+section[data-testid="stSidebar"] h2 { color: #f0f4ff !important; font-size: 1.1rem !important; }
+section[data-testid="stSidebar"] h3 { color: #f59e0b !important; font-size: 0.85rem !important; letter-spacing: 0.08em !important; text-transform: uppercase !important; }
+section[data-testid="stSidebar"] strong { color: #c9d6f0 !important; }
 
-/* progress bar */
-.stProgress > div > div { background-color: #2a2a3a !important; }
-.stProgress > div > div > div { background-color: #00e5a0 !important; }
+/* progress bar track */
+.stProgress > div > div { background-color: #1a2742 !important; border-radius: 99px !important; }
+.stProgress > div > div > div { border-radius: 99px !important; }
+
+/* expander */
+.streamlit-expanderHeader {
+    background-color: #0c1628 !important;
+    border: 1px solid #1e2e4a !important;
+    border-radius: 8px !important;
+    color: #8a9cc0 !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 12px !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -277,7 +293,7 @@ def predict(title, requirements, emp_type, industry, function_):
 
 # ── sidebar ───────────────────────────────────────────────────────────────────
 with st.sidebar:
-    st.markdown("## 🛡️ JobGuard")
+    st.markdown("## 🛡️  JobGuard")
     st.markdown("---")
     st.markdown("### About")
     st.markdown(
@@ -301,31 +317,20 @@ with st.sidebar:
     )
     st.markdown("---")
     st.markdown(
-        "<small style='color:#6b6b85;font-family:monospace'>AIML 4-Week Project · Week 4 Demo</small>",
+        "<small style='color:#6b6b85;font-family:monospace'>🛡️ Astra Project &nbsp;·&nbsp; Final Submission</small>",
         unsafe_allow_html=True
     )
 
 
 # ── header ────────────────────────────────────────────────────────────────────
-st.markdown(
-    """
-    <div style='margin-bottom:8px'>
-        <span style='font-family:monospace;font-size:11px;color:#00e5a0;
-                     border:1px solid #00e5a0;padding:3px 10px;border-radius:2px;
-                     letter-spacing:0.1em;text-transform:uppercase'>
-            ● ML Project — Week 4 Demo
-        </span>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+
 
 st.markdown(
     "<h1 style='font-size:3rem;margin-bottom:6px'>Job<span style='color:#00e5a0'>Guard</span></h1>",
     unsafe_allow_html=True
 )
 st.markdown(
-    "<p style='color:#6b6b85;margin-bottom:32px;font-size:15px'>"
+    "<p style='color:#8a9cc0;margin-bottom:32px;font-size:15px;font-family:Inter,sans-serif'>"
     "Enter job posting details below to check if it looks real or fraudulent.</p>",
     unsafe_allow_html=True
 )
@@ -339,7 +344,7 @@ c3.metric("Feature Method", "TF-IDF")
 st.markdown("<br>", unsafe_allow_html=True)
 
 # ── form ──────────────────────────────────────────────────────────────────────
-st.markdown("### 📋 Job Posting Details")
+st.markdown("### 📋  Job Posting Details")
 
 title = st.text_input("Job Title *", placeholder="e.g.  Senior Python Developer")
 
@@ -398,11 +403,11 @@ if analyse:
         if verdict == REAL:
             st.markdown(
                 f"""
-                <div style='background:rgba(0,229,160,0.06);border:1px solid #00e5a0;
+                <div style='background:rgba(37,99,235,0.08);border:1px solid #3b82f6;
                             border-radius:4px;padding:28px 32px;margin-bottom:16px'>
                     <div style='font-size:2.2rem;margin-bottom:8px'>✅</div>
                     <div style='font-family:Syne,sans-serif;font-size:1.8rem;
-                                font-weight:800;color:#00e5a0;letter-spacing:-0.02em'>
+                                font-weight:800;color:#60a5fa;letter-spacing:-0.02em'>
                         Looks Real
                     </div>
                     <div style='font-family:monospace;font-size:11px;
@@ -420,11 +425,11 @@ if analyse:
         elif verdict == SUSPICIOUS:
             st.markdown(
                 f"""
-                <div style='background:rgba(255,165,0,0.06);border:1px solid #ffa500;
+                <div style='background:rgba(245,158,11,0.08);border:1px solid #f59e0b;
                             border-radius:4px;padding:28px 32px;margin-bottom:16px'>
                     <div style='font-size:2.2rem;margin-bottom:8px'>⚠️</div>
                     <div style='font-family:Syne,sans-serif;font-size:1.8rem;
-                                font-weight:800;color:#ffa500;letter-spacing:-0.02em'>
+                                font-weight:800;color:#fbbf24;letter-spacing:-0.02em'>
                         Suspicious
                     </div>
                     <div style='font-family:monospace;font-size:11px;
@@ -442,11 +447,11 @@ if analyse:
         else:  # FRAUDULENT
             st.markdown(
                 f"""
-                <div style='background:rgba(255,77,109,0.06);border:1px solid #ff4d6d;
+                <div style='background:rgba(239,68,68,0.08);border:1px solid #ef4444;
                             border-radius:4px;padding:28px 32px;margin-bottom:16px'>
                     <div style='font-size:2.2rem;margin-bottom:8px'>🚫</div>
                     <div style='font-family:Syne,sans-serif;font-size:1.8rem;
-                                font-weight:800;color:#ff4d6d;letter-spacing:-0.02em'>
+                                font-weight:800;color:#f87171;letter-spacing:-0.02em'>
                         Likely Fraudulent
                     </div>
                     <div style='font-family:monospace;font-size:11px;
@@ -462,18 +467,20 @@ if analyse:
             verdict_label = "Fraudulent"
 
         # risk score bar
+        pct = min(rule_score / 8, 1.0)
+        bar_clr = "#ef4444" if verdict == FRAUDULENT else ("#f59e0b" if verdict == SUSPICIOUS else "#3b82f6")
         st.markdown(
-            f"<p style='font-family:monospace;font-size:11px;color:#6b6b85;"
-            f"letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px'>"
-            f"Risk Score — {rule_score} pts &nbsp;|&nbsp; Model Confidence — {confidence:.1f}%</p>",
+            f"<p style='font-family:JetBrains Mono,monospace;font-size:10px;color:#4a6080;"
+            f"letter-spacing:0.12em;text-transform:uppercase;margin-bottom:8px'>"
+            f"Risk Score &nbsp;&middot;&nbsp; {rule_score} pts &nbsp;&nbsp;|&nbsp;&nbsp; Model Confidence &nbsp;&middot;&nbsp; {confidence:.1f}%</p>"
+            f"<div style='background:#1a2742;border-radius:99px;height:7px;overflow:hidden;margin-bottom:6px'>"
+            f"<div style='background:{bar_clr};width:{pct*100:.1f}%;height:100%;border-radius:99px'></div></div>",
             unsafe_allow_html=True
         )
-        st.progress(min(rule_score / 8, 1.0))   # 8 pts = full red bar
 
         # score legend
         st.markdown(
-            "<p style='font-family:monospace;font-size:10px;color:#3a3a50;"
-            "letter-spacing:0.08em'>"
+            "<p style='font-family:JetBrains Mono,monospace;font-size:10px;color:#2a3a55;letter-spacing:0.08em'>"
             "0–1 → Real &nbsp;&nbsp; 2–3 → Suspicious &nbsp;&nbsp; 4+ → Fraudulent</p>",
             unsafe_allow_html=True
         )
@@ -505,7 +512,7 @@ if analyse:
             if verdict == SUSPICIOUS:
                 st.markdown("### ⚠️ Potential concerns detected")
                 st.markdown(
-                    "<p style='font-family:monospace;font-size:12px;color:#ffa500'>"
+                    "<p style='font-family:JetBrains Mono,monospace;font-size:12px;color:#fbbf24;line-height:1.6'>"
                     "These signals don't confirm fraud but warrant independent verification before proceeding."
                     "</p>", unsafe_allow_html=True
                 )
@@ -527,8 +534,18 @@ if analyse:
 
         st.markdown("---")
         st.markdown(
-            "<small style='font-family:monospace;color:#6b6b85'>"
-            "⚠️ This model has 93% accuracy on test data. Always do your own research before applying."
-            "</small>",
+            """
+            <div style='background:#0c1628;border:1px solid #1e2e4a;border-radius:10px;padding:18px 22px;margin-top:12px;border-left:3px solid #f59e0b'>
+                <p style='font-family:JetBrains Mono,monospace;font-size:10px;color:#f59e0b;letter-spacing:0.12em;
+                           text-transform:uppercase;margin-bottom:6px'>⚠️ Disclaimer</p>
+                <p style='font-family:Inter,sans-serif;font-size:13px;color:#8a9cc0;line-height:1.7;margin:0'>
+                    This tool is powered by a machine learning model with <strong style='color:#e8eeff'>93% accuracy</strong>
+                    on test data — it is <strong style='color:#f87171'>not infallible</strong>. Always independently verify
+                    job postings before sharing personal information or making any financial commitment.
+                    Do not rely solely on this result. When in doubt, research the company directly,
+                    check official websites, and consult trusted sources.
+                </p>
+            </div>
+            """,
             unsafe_allow_html=True
         )
