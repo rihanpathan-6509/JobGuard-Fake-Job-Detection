@@ -56,8 +56,11 @@ A weighted system that flags scam-specific patterns the ML model may miss:
 
 | Metric | Value |
 |---|---|
-| Accuracy | 93% |
-| Fake Recall | 83% |
+| Accuracy | 97% |
+| F1-Score for Real | 99% |
+| F1-Score for Fake | 67% |
+| Real Precision | 98% |
+| Fake Precision | 84% |
 | Training Samples | 17,880 |
 | Features | TF-IDF (5k) + 5 engineered |
 
@@ -130,4 +133,4 @@ Team Members
 
 ## Note
 
-This model has 93% accuracy on test data. Always do your own research before applying to any job posting.
+This model has 97% accuracy on test data. Always do your own research before applying to any job posting.
